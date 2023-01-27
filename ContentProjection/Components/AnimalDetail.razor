@@ -4,9 +4,9 @@
 <h3>Animal Detail</h3>
 <p>Name: @Animal.Name</p>
 
-@if(DetailTemplate is not null)
+@if(ChildContent is not null)
 {
-    @DetailTemplate.Invoke(GetExamineDetail(Animal));
+    @ChildContent.Invoke(GetExamineDetail(Animal))
 }
 
 @code {
@@ -14,7 +14,7 @@
     public T Animal { get; set; }
 
     [Parameter]
-    public RenderFragment<string>? DetailTemplate { get; set; }
+    public RenderFragment<string>? ChildContent { get; set; }
 
     private string GetExamineDetail(IAnimal animal) => $"The age is: {Animal.Age}.";
 }
